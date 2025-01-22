@@ -132,12 +132,3 @@ The final report provides an assessment of the interview, including:
 ## Contributing
 
 Contributions to this project are welcome! Feel free to submit pull requests or open issues to suggest improvements or report bugs.
-```
-
-**Remember to:**
-
-*   Replace `<repository_url>` with the actual URL of your Git repository.
-*   Consider adding a screenshot or GIF of the application in action to the `README.md`.
-*   If you add a `questionnaire.csv` file, mention its purpose in the `README.md` (e.g., "The `questionnaire.csv` file contains optional predefined questions that can supplement the RAG-based question generation.").
-
-This detailed `README.md` will help users understand, set up, and use your AI HR Interviewer effectively. Let me know if you have any other questions.
