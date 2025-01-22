@@ -1,0 +1,12 @@
+[
+    {
+        "profession": "Software Engineer/Developer (Full Stack, Front-end, Back-end)",
+        "interview_type": "Initial Phone Screen",
+        "description": "Essential for building and maintaining applications. Full-stack developers work on both the front-end and back-end of applications. Front-end developers focus on the user interface and user experience, while back-end developers work on the server-side logic and databases.",
+        "max_questions": 2,
+        "questions": [
+            "\"Can you describe a project where you used both front-end and back-end technologies, and how you handled the integration between them?\"",
+            "\"Can you share your approach to ensuring user interface compatibility across different browsers and devices?\""
+        ]
+    }
+]

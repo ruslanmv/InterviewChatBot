@@ -1,0 +1,51 @@
+[
+    {
+      "type": "Initial Phone Screen",
+      "interviewer": "HR or Recruiter",
+      "description": "A short phone call (15-30 minutes) to discuss background, experience, salary expectations, and interest in the role. May include basic technical questions.",
+      "goal": "Assess communication skills, confirm interest, and ensure minimum qualifications are met before proceeding to further stages.",
+      "max_questions": 5
+    },
+    {
+      "type": "First Round - Technical Interview",
+      "interviewer": "Technical Team Member (e.g., Developer, Engineer, Architect)",
+      "description": "Assessment of technical skills, knowledge, and problem-solving abilities through coding challenges, technical questions, and discussions of past projects.",
+      "goal": "Evaluate core technical competencies and problem-solving approach.",
+      "max_questions": 15
+    },
+    {
+      "type": "First Round - Behavioral/Fit Interview",
+      "interviewer": "Manager or Team Lead",
+      "description": "Discussion of experience, work style, teamwork skills, and cultural fit with the company.",
+      "goal": "Assess if the candidate would be a good fit for the team's culture and working style.",
+      "max_questions": 10
+    },
+    {
+      "type": "Second/Final Round - Technical Deep Dive",
+      "interviewer": "Senior Engineers or Architects",
+      "description": "Thorough technical evaluation, including system design questions and discussions of complex technical challenges.",
+      "goal": "Evaluate in-depth technical expertise and ability to handle complex scenarios.",
+      "max_questions": 10
+    },
+    {
+      "type": "Second/Final Round - Case Study Interview",
+      "interviewer": "Senior Consultants, Managers",
+      "description": "Presentation of a realistic business problem to analyze, propose solutions for, and discuss the technical, business, and strategic implications.",
+      "goal": "Evaluate problem-solving, analytical skills, and strategic thinking in a business context.",
+      "max_questions": 5
+    },
+    {
+      "type": "Second/Final Round - Managerial/Leadership Interviews",
+      "interviewer": "Senior Managers, Directors, or Partners",
+      "description": "Assessment of leadership potential, strategic thinking, and overall fit for the company. May also include more behavioral questions.",
+      "goal": "Evaluate leadership potential, alignment with company values, and make a final hiring decision.",
+      "max_questions": 10
+    },
+    {
+      "type": "Additional Interviews/Assessment (Possible)",
+      "interviewer": "Varies",
+      "description": "Could include a team lunch, further technical assessments, or a meeting with higher-level executives. May be used for very senior roles or to resolve any remaining questions",
+      "goal": "Gain further insights into fit, complete a final assessment, or address any outstanding concerns.",
+      "max_questions": 5
+    }
+  ]

@@ -1,0 +1,135 @@
+# AI HR Interviewer
+
+This project implements an AI-powered HR interviewer designed to conduct interviews and generate comprehensive reports based on a provided knowledge base and the candidate's responses. The interviewer utilizes Retrieval-Augmented Generation (RAG) to formulate contextually relevant questions tailored to the specific role and company, using an uploaded document (e.g., job description, company policies) as its primary information source.
+
+## Features
+
+*   **RAG-Based Interviewing:** Dynamically generates interview questions tailored to the specific role and company, based on the content of the uploaded document.
+*   **Audio Interaction:** Supports both voice and text input from the candidate, offering a more natural and accessible interview experience. It uses advanced speech-to-text and text-to-speech technologies to facilitate spoken interactions.
+*   **Automated Report Generation:** Produces a detailed HR report post-interview, summarizing the candidate's performance, highlighting strengths and weaknesses, assessing suitability for the role, and providing recommendations for next steps.
+*   **Admin Settings:** Offers customizable settings for administrators, including toggling audio interaction and selecting the AI interviewer's voice (currently supporting "alloy" and "onyx").
+*   **Document Upload:** Enables users to upload documents in TXT, PDF, or DOCX formats. These documents act as the knowledge base, ensuring that the interview questions are directly relevant to the job and company.
+
+## Technology Stack
+
+The AI HR Interviewer is built using a modern technology stack that includes:
+
+*   **Python:** The primary programming language for backend logic and integration.
+*   **Gradio:** For creating the user interface and handling user interactions.
+*   **OpenAI API:** Powers the AI functionalities, including natural language processing, text generation (GPT models), embeddings, and speech technologies (Whisper for speech-to-text, TTS for text-to-speech).
+*   **LangChain:** Facilitates the creation of complex NLP pipelines, including document processing, RAG implementation, and interaction flows.
+*   **FAISS (Facebook AI Similarity Search):** Used for efficient similarity search and retrieval of document embeddings, enabling quick access to relevant information during the interview process.
+*   **python-docx:** For generating DOCX format reports.
+
+## Retrieval-Augmented Generation (RAG) and Document Retrieval
+
+The RAG approach enhances the interview process by grounding the AI's questions in a specific, relevant knowledge base. Here’s how it works:
+
+1.  **Document Upload and Processing:** Users upload a document (TXT, PDF, DOCX) that serves as the interview's knowledge base. This document is processed and split into smaller chunks.
+2.  **Embeddings Generation:** Each chunk is converted into a high-dimensional vector (embedding) using OpenAI's embedding models. These embeddings capture the semantic meaning of the text chunks.
+3.  **FAISS Indexing:** The embeddings are stored in a FAISS index, which allows for rapid similarity searches. When a question is asked or a context is provided, the system can quickly find the most relevant document chunks.
+4.  **Query Processing:** During the interview, the AI processes the ongoing conversation context and the candidate's responses, converting them into queries.
+5.  **Contextual Retrieval:** The system uses the FAISS index to retrieve the most relevant document chunks based on the current query. This ensures that the questions and evaluations are based on accurate and relevant information from the provided document.
+6.  **Question and Report Generation:** The retrieved document chunks, along with the interview history, are used to generate contextually appropriate questions and to compile the final report.
+
+## Setup
+
+To set up the AI HR Interviewer, you will need:
+
+*   **Anaconda:** For environment management. Download and install from [https://www.anaconda.com/download/](https://www.anaconda.com/download/).
+*   **OpenAI API Key:** Required for accessing OpenAI's models. Obtain your key from [https://platform.openai.com/](https://platform.openai.com/).
+
+Follow these steps to get started:
+
+1.  **Clone the Repository:**
+
+    ```bash
+    git clone <repository_url> # Replace with your repository URL
+    cd hr_interviewer
+    ```
+
+2.  **Create and Activate the Conda Environment:**
+
+    ```bash
+    conda create -n hr python=3.9
+    conda activate hr
+    ```
+
+3.  **Install Dependencies:**
+
+    ```bash
+    pip install -r requirements.txt
+    ```
+
+4.  **Set up OpenAI API Key:**
+
+    *   Create a `.env` file in the `hr_interviewer` directory.
+    *   Add your OpenAI API key to the `.env` file:
+
+        ```
+        OPENAI_API_KEY=your_openai_api_key_here
+        ```
+
+## Usage
+
+1.  **Run the Application:**
+
+    ```bash
+    python app.py
+    ```
+
+    This launches the Gradio interface in your web browser.
+
+2.  **Upload a Document:**
+
+    *   Navigate to the "Upload Document" tab.
+    *   Click "Browse" to select and upload your document.
+
+3.  **Select User Role:**
+
+    *   Choose "Candidate" to participate in the interview.
+    *   Choose "Admin" and enter the password (`password1`) for administrative access.
+
+4.  **Start the Interview:**
+
+    *   Click "Start Interview" to begin.
+
+5.  **Interact with the Interviewer:**
+
+    *   Respond to questions via text or voice.
+    *   The AI will ask questions based on the uploaded document and your responses.
+
+6.  **Receive the Report:**
+
+    *   After the interview, a detailed report is generated and displayed.
+    *   Download the report in DOCX format using the provided link.
+
+## What to Expect
+
+The AI HR Interviewer simulates a real interview experience, asking questions relevant to the provided job description or company information. The generated report includes:
+
+*   **Candidate Overview:** Basic information about the candidate.
+*   **Assessment Summary:** Key strengths, areas for development, and overall suitability.
+*   **Experience and Skills:** Summary of relevant experience, demonstrated skills, and alignment with job requirements.
+*   **Responses:** Observations on communication, problem-solving, and behavior.
+*   **Recommendations:** Suggested next steps and potential training needs.
+
+**Note:** This tool is designed to assist in the interview process and should not be the sole basis for hiring decisions. Human judgment remains crucial.
+
+## Admin Features
+
+*   **Settings:**
+    *   **Enable Audio:** Toggle audio input/output.
+    *   **Select Interviewer:** Choose between the "alloy" and "onyx" voices.
+*   **Upload Document:** Upload the knowledge base document.
+*   **Description:** Access a detailed project description and system architecture diagram.
+
+## Troubleshooting
+
+*   **Error: No document uploaded:** Ensure a document is uploaded before starting the interview.
+*   **Audio issues:** Verify microphone and speaker configurations and browser permissions.
+*   **Other errors:** Check the console for details. You may need to install missing dependencies or restart the application.
+
+## Contributing
+
+Contributions are welcome! Submit pull requests or open issues to suggest improvements or report bugs.

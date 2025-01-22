@@ -1,0 +1,202 @@
+[
+    {
+      "profession": "Software Engineer/Developer (Full Stack, Front-end, Back-end)",
+      "description": "Essential for building and maintaining applications. Full-stack developers work on both the front-end and back-end of applications. Front-end developers focus on the user interface and user experience, while back-end developers work on the server-side logic and databases."
+    },
+    {
+      "profession": "Cloud Architect",
+      "description": "Designs and implements cloud infrastructure solutions (AWS, Azure, GCP). High demand due to cloud migration trends."
+    },
+    {
+      "profession": "Data Scientist",
+      "description": "Analyzes data to provide insights and build predictive models."
+    },
+    {
+      "profession": "Data Engineer",
+      "description": "Builds and maintains data pipelines and infrastructure."
+    },
+    {
+      "profession": "DevOps Engineer",
+      "description": "Automates software build, deployment, and infrastructure management."
+    },
+    {
+      "profession": "Project Manager",
+      "description": "Oversees project delivery, timelines, budgets, and client communication."
+    },
+    {
+      "profession": "Business Analyst",
+      "description": "Bridges the gap between technical teams and business stakeholders, gathering and defining requirements."
+    },
+    {
+      "profession": "Solution Architect",
+      "description": "Designs end-to-end technical solutions for clients."
+    },
+    {
+      "profession": "IT Consultant",
+      "description": "Provides expert advice on technology strategy and implementation."
+    },
+    {
+      "profession": "Cybersecurity Specialist/Analyst",
+      "description": "Protects systems and data from cyber threats."
+    },
+    {
+      "profession": "UX/UI Designer",
+      "description": "Creates user-friendly interfaces and experiences for applications."
+    },
+    {
+      "profession": "Quality Assurance (QA) Engineer/Tester",
+      "description": "Ensures software quality through testing and validation."
+    },
+    {
+      "profession": "Technical Lead",
+      "description": "Provides technical guidance and mentorship to development teams."
+    },
+    {
+      "profession": "Agile Coach/Scrum Master",
+      "description": "Facilitates agile development methodologies."
+    },
+    {
+      "profession": "Database Administrator (DBA)",
+      "description": "Manages and maintains databases."
+    },
+    {
+      "profession": "SAP Consultant (Various Modules)",
+      "description": "Implements and supports SAP solutions, a common need in European enterprises."
+    },
+    {
+      "profession": "Salesforce Developer/Administrator",
+      "description": "Customizes and maintains Salesforce CRM platforms."
+    },
+    {
+      "profession": "Mobile App Developer (iOS, Android)",
+      "description": "Builds mobile applications."
+    },
+    {
+      "profession": "Artificial Intelligence (AI) / Machine Learning (ML) Engineer",
+      "description": "Develops AI/ML models and algorithms."
+    },
+    {
+      "profession": "Blockchain Developer",
+      "description": "Creates blockchain-based applications and solutions."
+    },
+    {
+      "profession": "Network Engineer",
+      "description": "Designs, implements, and manages network infrastructure."
+    },
+    {
+      "profession": "System Administrator",
+      "description": "Manages and maintains IT systems and infrastructure."
+    },
+    {
+      "profession": "Technical Writer",
+      "description": "Creates technical documentation for software and systems."
+    },
+    {
+      "profession": "Delivery Manager",
+      "description": "Manages the delivery of multiple projects."
+    },
+    {
+      "profession": "Account Manager",
+      "description": "Develops and maintains relationships with clients, focusing on sales and business development."
+    },
+    {
+      "profession": "IoT (Internet of Things) Specialist",
+      "description": "Develops and implements IoT solutions."
+    },
+    {
+      "profession": "Business Intelligence (BI) Developer/Analyst",
+      "description": "Creates reports and dashboards for business insights."
+    },
+    {
+      "profession": "RPA (Robotic Process Automation) Developer",
+      "description": "Automates business processes using software robots."
+    },
+    {
+      "profession": "Big Data Engineer",
+      "description": "Works with large-scale data processing and analytics."
+    },
+    {
+      "profession": "Enterprise Architect",
+      "description": "Defines the overall IT architecture for an organization."
+    },
+    {
+      "profession": "Change Management Consultant",
+      "description": "Helps organizations manage the human side of technology adoption."
+    },
+    {
+      "profession": "Security Architect",
+      "description": "Designs secure IT systems and infrastructure."
+    },
+    {
+      "profession": "Cloud Security Specialist",
+      "description": "Focuses on security within cloud environments."
+    },
+    {
+      "profession": "Data Governance Specialist",
+      "description": "Ensures data quality, compliance, and security within an organization."
+    },
+    {
+      "profession": "IT Operations Manager",
+      "description": "Oversees day-to-day IT operations."
+    },
+    {
+      "profession": "Test Automation Engineer",
+      "description": "Develops and implements automated testing frameworks."
+    },
+    {
+      "profession": "Infrastructure Engineer",
+      "description": "Manages physical and virtual IT infrastructure."
+    },
+    {
+      "profession": "Pre-Sales Consultant",
+      "description": "Provides technical expertise during the sales process."
+    },
+    {
+      "profession": "Content Management System (CMS) Developer",
+      "description": "Builds and maintains websites and content management platforms."
+    },
+    {
+      "profession": "IT Trainer",
+      "description": "Delivers training on software and systems to employees and clients."
+    },
+    {
+      "profession": "Help Desk/Support Technician",
+      "description": "Provides first-level technical support."
+    },
+    {
+      "profession": "Business Process Analyst",
+      "description": "Analyzes and improves business processes."
+    },
+    {
+      "profession": "IT Procurement Specialist",
+      "description": "Manages the procurement of IT hardware and software."
+    },
+    {
+      "profession": "Data Privacy Officer (DPO)",
+      "description": "A legally required role in the EU to ensure GDPR compliance."
+    },
+    {
+      "profession": "Knowledge Management Specialist",
+      "description": "Develops and maintains knowledge bases and information repositories."
+    },
+    {
+      "profession": "Recruitment Specialist (IT)",
+      "description": "Focuses on hiring IT professionals, crucial for a growing consulting firm."
+    },
+    {
+      "profession": "HR Business Partner (IT)",
+      "description": "Supports HR needs within the IT department."
+    },
+    {
+      "profession": "Financial Analyst (IT)",
+      "description": "Provides financial analysis and reporting for the IT department."
+    },
+    {
+      "profession": "Office Manager",
+      "description": "Oversees administrative functions within the office, important for smooth daily operations."
+    },
+    {
+      "profession": "Legal Counsel (IT)",
+      "description": "Provides legal advice on IT contracts, intellectual property, and other related matters."
+    }
+  ]

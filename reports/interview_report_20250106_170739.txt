@@ -1,0 +1,15 @@
+
+        HR Report in English:
+        Interview Summary:
+        👋 Hi there, I'm Sarah, your friendly AI HR assistant! I'll guide you through a series of interview questions to learn more about you. Take your time and answer each question thoughtfully.
+Let's begin! Here's your first question: Can you describe your experience with using Applicant Tracking Systems (ATS) and other HR platforms for recruitment and selection processes?
+Was very good
+That's great to hear! However, could you please elaborate a bit more? For instance, what specific Applicant Tracking Systems have you used before? Additionally, could you share a few examples of how you've utilized these platforms in your recruitment and selection processes?
+Alright, let's move on. Can you describe your methodology for identifying and selecting potential new clients and businesses interested in personnel search and selection services during your role in Milano Italia?
+was goo experience
+I'm glad to hear that you had a good experience, but could you perhaps go into a bit more detail about your methodology for identifying and selecting potential new clients? It would be very helpful to understand the strategies or specific tools you used during your role in Milano Italia.
+That wraps up our interview. Thank you so much for your responses—it's been great learning more about you!
+
+        Assessment:
+        Based on the responses, the candidate's strengths, areas for improvement, and overall fit for the role have been noted. No additional knowledge-based insights due to missing vector database.
+        
