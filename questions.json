@@ -1,1 +1,17 @@
-["Can you describe your experience with using Applicant Tracking Systems (ATS) and other HR platforms for recruitment and selection processes?", "Can you describe your methodology for identifying and selecting potential new clients and businesses interested in personnel search and selection services during your role in Milano Italia?"]
+[
+    "\"Can you describe your experience with programming languages suitable for data science such as Python or R?\"",
+    "\"Which data visualization tools have you used in your previous projects?\"",
+    "\"Can you explain a situation where you had to deal with missing or inconsistent data? What was your approach to resolving it?\"",
+    "\"Can you detail your experience with machine learning algorithms and which ones do you prefer to use?\"",
+    "\"How would you deal with non-numeric data or categorical data in your dataset?\"",
+    "\"Can you describe a project where you used statistical analysis to provide insights into a complex problem?\"",
+    "\"What is your approach to ensuring the accuracy of your data analysis and models?\"",
+    "\"How would you explain the concept of overfitting to a non-technical stakeholder?\"",
+    "\"Can you explain a time when you had to present complex data findings to a non-technical audience? How did you ensure they understood the key points?\"",
+    "\"What are your preferred methods for cleaning and preprocessing data?\"",
+    "\"Can you discuss your experience with database languages like SQL?\"",
+    "\"How have you used hypothesis testing in your previous work?\"",
+    "\"What is your experience with big data platforms such as Hadoop or Spark?\"",
+    "\"How do you approach feature selection when preparing for model building?\"",
+    "\"Can you describe a time when you used predictive modeling to solve a business problem?\""
+]
