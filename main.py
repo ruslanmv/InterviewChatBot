@@ -22,8 +22,11 @@ from generator import (
     generate_questions,
 )
 from splitgpt import (
-    generate_and_save_questions_from_pdf3
+    generate_and_save_questions_from_pdf3, generate_questions_from_job_description
 )
+
+
+
 
 # Placeholder imports for the manager application
 # Ensure these modules and functions are correctly implemented in their respective files
@@ -40,6 +43,7 @@ from prompt_instructions import (
 )  # Placeholder, needs implementation
 from settings import language  # Placeholder, needs implementation
 from utils import save_interview_history  # Placeholder, needs implementation
+
 
 
 class InterviewState:
@@ -496,24 +500,73 @@ def create_manager_app():
             with gr.Tab("Generate from PDF"):
                 gr.Markdown("### 📄 Upload PDF for Question Generation")
                 pdf_file_input = gr.File(label="Upload PDF File", type="filepath")
-                num_questions_pdf_input = gr.Number(label="Number of Questions", value=5, precision=0)
-                
+                #num_questions_pdf_input = gr.Number(label="Number of Questions", value=5, precision=0)
+                num_questions_pdf_input = gr.Number(
+                    label="Number of Questions (1-30)",  # Update label
+                    value=5,
+                    precision=0,
+                    minimum=1,
+                    maximum=30,  # Set maximum limit to 30
+                )
+
                 pdf_status_output = gr.Textbox(label="Status", lines=3)
                 pdf_question_output = gr.JSON(label="Generated Questions")
                 
                 generate_pdf_button = gr.Button("Generate Questions from PDF")
 
+
                 def update_pdf_ui(pdf_path, num_questions):
+                    print(f"[DEBUG] PDF Path: {pdf_path}")  # Check if PDF path is passed correctly
+                    print(f"[DEBUG] Requested Number of Questions: {num_questions}")  # Debug input
+
+                    all_statuses = []
+                    all_questions = []
+                    print(f"[DEBUG] Calling generate_and_save_questions_from_pdf3 with {num_questions}")
                     for status, questions in generate_and_save_questions_from_pdf3(pdf_path, num_questions):
-                        yield gr.update(value=status), gr.update(value=questions)
+                        print(f"[DEBUG] Status: {status}, Questions Generated: {len(questions)}")  # Debug output
+                        all_statuses.append(status)
+                        all_questions.append(questions)
+
+                    combined_status = "\n".join(all_statuses) 
+                    final_questions = all_questions[-1] if all_questions else []
+
+                    return gr.update(value=combined_status), gr.update(value=final_questions)
 
                 generate_pdf_button.click(
                     update_pdf_ui,
                     inputs=[pdf_file_input, num_questions_pdf_input],
                     outputs=[pdf_status_output, pdf_question_output],
                 )
+            
+            with gr.Tab("Generate from Job Description"):
+                gr.Markdown("### 📝 Enter Job Description for Question Generation")
 
+                job_description_input = gr.Textbox(label="Job Description", placeholder="Type or paste the job description here...", lines=6)
+                num_questions_job_input = gr.Number(
+                    label="Number of Questions (1-30)",  # Limit questions to 30
+                    value=5,
+                    precision=0,
+                    minimum=1,
+                    maximum=30
+                )
 
+                job_status_output = gr.Textbox(label="Status", lines=3)
+                job_question_output = gr.JSON(label="Generated Questions")
+
+                generate_job_button = gr.Button("Generate Questions from Job Description")
+
+                def update_job_description_ui(job_description, num_questions):
+                    print(f"[DEBUG] Job Description Length: {len(job_description)} characters")
+                    print(f"[DEBUG] Requested Number of Questions: {num_questions}")
+
+                    status, questions = generate_questions_from_job_description(job_description, num_questions)
+                    return gr.update(value=status), gr.update(value=questions)
+
+                generate_job_button.click(
+                    update_job_description_ui,
+                    inputs=[job_description_input, num_questions_job_input],
+                    outputs=[job_status_output, job_question_output],
+                )
 
 
         def show_selected_ui(role):

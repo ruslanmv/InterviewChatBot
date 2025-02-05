@@ -97,11 +97,19 @@ def generate_questions_from_text(text, n_questions=5):
         response = chat.invoke(messages)
         questions = response.content.strip().split("\n\n")
         questions = [q.strip() for q in questions if q.strip()]
+        print(f"[DEBUG] Raw questions from LLM: {questions}")
+
+        formatted_questions = []
+        for i, q in enumerate(questions):
+            formatted_questions.append(f"Question {i+1}: {q}")
+
+        print(f"[DEBUG] Formatted questions: {formatted_questions}")
+        return formatted_questions
     except Exception as e:
         print(f"[ERROR] Failed to generate questions: {e}")
-        questions = ["An error occurred while generating questions."]
+        return ["An error occurred while generating questions."]
 
-    return questions
+
 
 
 def save_questions(questions):
@@ -109,223 +117,224 @@ def save_questions(questions):
         json.dump(questions, f, indent=4)
 
 
-def generate_and_save_questions_from_pdf(pdf_path, total_questions=5):
-    print(f"[INFO] Generating questions from PDF: {pdf_path}")
-    
-    try:
-        pdf_text = extract_text_from_pdf(pdf_path)
 
-        if not pdf_text.strip():
-            raise RuntimeError("The PDF content is empty or could not be read.")
-
-        chunk_size = 2000
-        chunks = split_text_into_chunks(pdf_text, chunk_size)
-        n_chunks = len(chunks)
-
-        questions_distribution = distribute_questions_across_chunks(n_chunks, total_questions)
-        combined_questions = []
-
-        for i, (chunk, n_questions) in enumerate(zip(chunks, questions_distribution)):
-            print(f"[DEBUG] Processing chunk {i + 1} of {n_chunks}")
-            if n_questions > 0:
-                questions = generate_questions_from_text(chunk, n_questions=n_questions)
-                combined_questions.extend(questions)
-
-        if not combined_questions:
-            raise RuntimeError("No questions generated from the PDF content.")
-
-        print(f"[INFO] Total questions generated: {len(combined_questions)}")
-        save_questions(combined_questions)
-        print(f"[INFO] Questions saved to {QUESTIONS_PATH}")
-
-        # Return a status message and the JSON object
-        return "Questions generated successfully.", {"questions": combined_questions}
-    
-    except Exception as e:
-        # Handle exceptions and return meaningful error messages
-        error_message = f"Error during question generation: {str(e)}"
-        print(f"[ERROR] {error_message}")
-        return error_message, {"questions": []}
-
-
-
-
-
-
-import gradio as gr
-import json
 import os
-import time
-
-def generate_and_save_questions_from_pdf3_mock(pdf_path, total_questions=5):
-    print(f"[INFO] Generating questions from PDF: {pdf_path}")
-
-    if not os.path.exists(pdf_path):
-        yield "❌ Error: PDF file not found.", {}
-        return
-
-    yield "📄 PDF uploaded successfully. Processing started...", {}
-
-    try:
-        # Simulate PDF text extraction and processing
-        time.sleep(1)
-        pdf_text = "This is some mock PDF text for testing purposes."
-
-        if not pdf_text.strip():
-            yield "❌ Error: The PDF content is empty or could not be read.", {}
-            return
-
-        chunk_size = 2000
-        chunks = [pdf_text[i:i + chunk_size] for i in range(0, len(pdf_text), chunk_size)]
-        n_chunks = len(chunks)
-
-        yield f"🔄 Splitting text into {n_chunks} chunks...", {}
-
-        questions_distribution = [total_questions // n_chunks] * n_chunks
-        combined_questions = []
-
-        for i, (chunk, n_questions) in enumerate(zip(chunks, questions_distribution)):
-            yield f"🔄 Processing chunk {i + 1} of {n_chunks}...", {}
-            time.sleep(1)  # Simulating processing time
-            combined_questions.append(f"Sample Question from Chunk {i + 1}")
-
-        if not combined_questions:
-            yield "❌ Error: No questions generated from the PDF content.", {}
-            return
-
-        yield f"✅ Total {len(combined_questions)} questions generated. Saving questions...", {}
-        save_path = "generated_questions_from_pdf.json"
-        with open(save_path, "w") as f:
-            json.dump({"questions": combined_questions}, f)
-
-        yield "✅ PDF processing complete. Questions saved successfully!", {"questions": combined_questions}
-
-    except Exception as e:
-        yield f"❌ Error during question generation: {str(e)}", {}
-
-def generate_and_save_questions_from_pdf3_v1(pdf_path, total_questions=5):
-    print(f"[INFO] Generating questions from PDF: {pdf_path}")
-
-    if not os.path.exists(pdf_path):
-        yield "❌ Error: PDF file not found.", {}
-        return
-
-    yield "📄 PDF uploaded successfully. Processing started...", {}
-
-    try:
-        # Extract text from the PDF file
-        pdf_text = extract_text_from_pdf(pdf_path)
-
-        if not pdf_text.strip():
-            yield "❌ Error: The PDF content is empty or could not be read.", {}
-            return
-
-        # Split the PDF content into chunks
-        chunk_size = 2000  # Adjust this as necessary
-        chunks = split_text_into_chunks(pdf_text, chunk_size)
-        n_chunks = len(chunks)
-
-        yield f"🔄 Splitting text into {n_chunks} chunks...", {}
-
-        # Distribute the total number of questions across chunks
-        questions_distribution = distribute_questions_across_chunks(n_chunks, total_questions)
-        combined_questions = []
-
-        # Process each chunk and generate questions
-        for i, (chunk, n_questions) in enumerate(zip(chunks, questions_distribution)):
-            yield f"🔄 Processing chunk {i + 1} of {n_chunks}...", {}
-            if n_questions > 0:
-                questions = generate_questions_from_text(chunk, n_questions=n_questions)
-                combined_questions.extend(questions)
-
-        if not combined_questions:
-            yield "❌ Error: No questions generated from the PDF content.", {}
-            return
-
-        yield f"✅ Total {len(combined_questions)} questions generated. Saving questions...", {}
-
-        # Save generated questions to a file
-        save_path = "generated_questions_from_pdf.json"
-        with open(save_path, "w") as f:
-            json.dump({"questions": combined_questions}, f)
-
-        yield "✅ PDF processing complete. Questions saved successfully!", {"questions": combined_questions}
-
-    except Exception as e:
-        error_message = f"❌ Error during question generation: {str(e)}"
-        print(f"[ERROR] {error_message}")
-        yield error_message, {}
-
 import json
-import os
+import re
+
 
 def generate_and_save_questions_from_pdf3(pdf_path, total_questions=5):
     print(f"[INFO] Generating questions from PDF: {pdf_path}")
+    print(f"[DEBUG] Number of total questions to generate: {total_questions}")
 
     if not os.path.exists(pdf_path):
-        yield "❌ Error: PDF file not found.", {}
+        yield "❌ Error: PDF file not found.", []
         return
 
-    yield "📄 PDF uploaded successfully. Processing started...", {}
+    yield "📄 PDF uploaded successfully. Processing started...", []
 
     try:
-        # Extract text from the PDF file
+        # 1. Extract text from the PDF
         pdf_text = extract_text_from_pdf(pdf_path)
-
         if not pdf_text.strip():
-            yield "❌ Error: The PDF content is empty or could not be read.", {}
+            yield "❌ Error: The PDF content is empty or could not be read.", []
             return
 
-        # Split the PDF content into chunks
-        chunk_size = 2000  # Adjust this as necessary
+        # 2. Split the PDF content into chunks
+        chunk_size = 2000  # Adjust as necessary
         chunks = split_text_into_chunks(pdf_text, chunk_size)
         n_chunks = len(chunks)
 
-        yield f"🔄 Splitting text into {n_chunks} chunks...", {}
+        yield f"🔄 Splitting text into {n_chunks} chunks...", []
 
-        # Distribute the total number of questions across chunks
-        questions_distribution = distribute_questions_across_chunks(n_chunks, total_questions)
+        # 3. Distribute total_questions evenly across the chunks
+        base = total_questions // n_chunks
+        remainder = total_questions % n_chunks
+        questions_per_chunk = [base] * n_chunks
+        for i in range(remainder):
+            questions_per_chunk[i] += 1
+
+        print(f"[DEBUG] Questions per chunk distribution: {questions_per_chunk}")
+
         combined_questions = []
 
-        # Process each chunk and generate questions
-        for i, (chunk, n_questions) in enumerate(zip(chunks, questions_distribution)):
-            yield f"🔄 Processing chunk {i + 1} of {n_chunks}...", {}
+        # Helper function to split any chunk's output into individual questions
+        def split_into_individual_questions(text_block):
+            """
+            Attempts to split a text block that might contain multiple questions
+            (like '1. Some question? 2. Another question?') into separate items.
+            """
+            # 1) Remove any "Question X:" prefix (e.g., "Question 1: ")
+            text_block = re.sub(r'Question\s*\d+\s*:\s*', '', text_block, flags=re.IGNORECASE)
+
+            # 2) Split on patterns like "1. Something", "2. Something"
+            #    This looks for one or more digits, then a dot, then whitespace: "(\d+\.\s+)"
+            splitted = re.split(r'\d+\.\s+', text_block.strip())
+
+            # 3) Clean up and filter out empty items
+            splitted = [s.strip() for s in splitted if s.strip()]
+
+            return splitted
+
+        # 4. Process each chunk and generate questions
+        for i, (chunk, n_questions) in enumerate(zip(chunks, questions_per_chunk)):
+            yield f"🔄 Processing chunk {i+1} of {n_chunks} with {n_questions} questions...", []
+            
             if n_questions > 0:
-                questions = generate_questions_from_text(chunk, n_questions=n_questions)
-                combined_questions.extend(questions)
+                # This function returns either a list of questions or a single string with multiple questions
+                questions_output = generate_questions_from_text(chunk, n_questions=n_questions)
 
-        if not combined_questions:
-            yield "❌ Error: No questions generated from the PDF content.", {}
-            return
+                if isinstance(questions_output, list):
+                    # If it's already a list, we further ensure each item is split if needed
+                    for item in questions_output:
+                        combined_questions.extend(split_into_individual_questions(str(item)))
+                else:
+                    # If it's a single string, we split it
+                    combined_questions.extend(split_into_individual_questions(str(questions_output)))
 
-        yield f"✅ Total {len(combined_questions)} questions generated. Saving questions...", {}
+        # 5. Check if the number of generated questions matches the desired total
+        if len(combined_questions) != total_questions:
+            yield f"⚠️ Warning: Expected {total_questions}, but generated {len(combined_questions)}.", []
 
-        # Save the combined questions in `generated_questions_from_pdf.json` (detailed version)
+        yield f"✅ Total {len(combined_questions)} questions generated. Saving questions...", []
+
+        # 6. Save the combined questions in `generated_questions_from_pdf.json`
         detailed_save_path = "generated_questions_from_pdf.json"
-        with open(detailed_save_path, "w") as f:
-            json.dump({"questions": combined_questions}, f)
+        with open(detailed_save_path, "w", encoding="utf-8") as f:
+            json.dump({"questions": combined_questions}, f, indent=4, ensure_ascii=False)
 
-        # Save only the questions (overwrite `questions.json` if it already exists)
+        # 7. Save only the questions (overwrite `questions.json` if it already exists)
         simple_save_path = "questions.json"
-        with open(simple_save_path, "w") as f:
-            json.dump(combined_questions, f)
+        with open(simple_save_path, "w", encoding="utf-8") as f:
+            json.dump(combined_questions, f, indent=4, ensure_ascii=False)
 
-        yield "✅ PDF processing complete. Questions saved successfully!", {"questions": combined_questions}
+        yield "✅ PDF processing complete. Questions saved successfully!", combined_questions
 
     except Exception as e:
         error_message = f"❌ Error during question generation: {str(e)}"
         print(f"[ERROR] {error_message}")
-        yield error_message, {}
+        yield error_message, []
 
+def generate_questions_from_job_description_old(job_description, num_questions):
+    print(f"[DEBUG] Generating {num_questions} questions from job description.")
+
+    if not job_description.strip():
+        return "❌ Error: Job description is empty.", []
+
+    try:
+        questions = generate_questions_from_text(job_description, num_questions=num_questions)
+
+        if not questions:
+            return "❌ Error: No questions generated.", []
+
+        return "✅ Questions generated successfully!", questions
+
+    except Exception as e:
+        error_message = f"❌ Error during question generation: {str(e)}"
+        print(f"[ERROR] {error_message}")
+        return error_message, []
+
+import os
+import json
+import math
+import re
+import os
+import json
+import math
+import re
+
+def distribute_questions_evenly(total_questions, n_chunks):
+    base = total_questions // n_chunks
+    remainder = total_questions % n_chunks
+
+    questions_per_chunk = [base] * n_chunks
+
+    # Distribute the remainder by incrementing the first `remainder` chunks
+    for i in range(remainder):
+        questions_per_chunk[i] += 1
+
+    return questions_per_chunk
+
+
+def generate_questions_from_job_description(job_description, total_questions=5):
+    print(f"[DEBUG] Generating {total_questions} questions from job description.")
+
+    if not job_description.strip():
+        return "❌ Error: Job description is empty.", []
+
+    try:
+        # 1. Split the job description into chunks
+        chunk_size = 2000  # Adjust as necessary
+        chunks = split_text_into_chunks(job_description, chunk_size)
+        n_chunks = len(chunks)
+
+        print(f"[DEBUG] Splitting text into {n_chunks} chunks...")
+
+        # 2. Distribute total_questions evenly across the chunks
+        questions_per_chunk = distribute_questions_evenly(total_questions, n_chunks)
+        print(f"[DEBUG] Questions per chunk distribution: {questions_per_chunk}")
+
+        combined_questions = []
+
+        # Helper function to split any chunk's output into individual questions
+        def split_into_individual_questions(text_block):
+            """
+            Attempts to split a text block that might contain multiple questions
+            (like '1. Some question? 2. Another question?') into separate items.
+            """
+            # Remove any "Question X:" prefix (e.g., "Question 1: ")
+            text_block = re.sub(r'Question\s*\d+\s*:\s*', '', text_block, flags=re.IGNORECASE)
+
+            # Split on patterns like "1. Something", "2. Something"
+            splitted = re.split(r'\d+\.\s+', text_block.strip())
+
+            # Clean up and filter out empty items
+            return [s.strip() for s in splitted if s.strip()]
+
+        # 3. Process each chunk and generate questions
+        for i, (chunk, n_questions) in enumerate(zip(chunks, questions_per_chunk)):
+            print(f"[DEBUG] Processing chunk {i+1} of {n_chunks} with {n_questions} questions...")
+            
+            if n_questions > 0:
+                questions_output = generate_questions_from_text(chunk, n_questions=n_questions)
+
+                if isinstance(questions_output, list):
+                    for item in questions_output:
+                        combined_questions.extend(split_into_individual_questions(str(item)))
+                else:
+                    combined_questions.extend(split_into_individual_questions(str(questions_output)))
+
+        if len(combined_questions) != total_questions:
+            print(f"⚠️ Warning: Expected {total_questions}, but generated {len(combined_questions)}.")
+
+        print(f"✅ Total {len(combined_questions)} questions generated. Saving questions...")
+
+        # Save the combined questions in `generated_questions_from_job_description.json`
+        detailed_save_path = "generated_questions_from_job_description.json"
+        with open(detailed_save_path, "w", encoding="utf-8") as f:
+            json.dump({"questions": combined_questions}, f, indent=4, ensure_ascii=False)
+
+        # Save only the questions (overwrite `questions.json` if it already exists)
+        simple_save_path = "questions.json"
+        with open(simple_save_path, "w", encoding="utf-8") as f:
+            json.dump(combined_questions, f, indent=4, ensure_ascii=False)
+
+        return "✅ Job description processing complete. Questions saved successfully!", combined_questions
+
+    except Exception as e:
+        error_message = f"❌ Error during question generation: {str(e)}"
+        print(f"[ERROR] {error_message}")
+        return error_message, []
 
 
 if __name__ == "__main__":
-    pdf_path = "professional_machine_learning_engineer_exam_guide_english.pdf"
+    pdf_path = "professional_machine_learning_engineer_exam_guide_english.pdf"  # Replace with your PDF path
 
     try:
-        generated_questions = generate_and_save_questions_from_pdf(
-            pdf_path, total_questions=5
-        )
-        print(f"Generated Questions:\n{json.dumps(generated_questions, indent=2)}")
+        # Using the generator to get the results
+        for status, questions in generate_and_save_questions_from_pdf3(pdf_path, total_questions=5):
+            print(status)  # Print the status message
+            if questions:
+                print(json.dumps(questions, indent=2))  # Print the questions if available
     except Exception as e:
         print(f"Failed to generate questions: {e}")
