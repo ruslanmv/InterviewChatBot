@@ -1,12 +1,7 @@
 [
-    "\"Can you share your approach to cleaning and preparing raw data for analysis?\"",
-    "\"Can you explain a complex machine learning algorithm that you have used in your projects and why you chose it?\"",
-    "\"How do you approach feature selection when preparing your data for machine learning models?\"",
-    "\"Could you describe a situation where you had to deal with a large dataset? What strategies did you use to manage it?\"",
-    "\"What are your strategies for validating the results of a data analysis?\"",
-    "\"Can you discuss your experience with data visualization tools and how you've used them to communicate insights to non-technical team members?\"",
-    "\"How do you ensure that your models are not overfitting the data?\"",
-    "\"Can you discuss a time when you developed a predictive model? What techniques did you use and were the results successful?\"",
-    "\"How have you handled missing or inconsistent data in your past projects?\"",
-    "\"Can you describe a situation where you used statistical analysis to solve a real-world problem?\""
+    "\"Can you tell me about a time you had to solve a complex problem related to software development and how you went about it?\"",
+    "\"What is your experience with front-end and back-end frameworks, and how have you applied them in your past projects?\"",
+    "\"Can you describe your process for testing and finding bugs in your code?\"",
+    "\"How do you approach working on both the user interface and the server-side of an application simultaneously?\"",
+    "\"In your opinion, what is the most challenging aspect of full-stack development and how have you overcome this in your past projects?\""
 ]
