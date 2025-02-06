@@ -90,7 +90,7 @@ def update_max_questions(interview_type):
     else:
         return gr.update(value=5, minimum=1, maximum=20)
 
-'''
+
 with gr.Blocks() as demo:
     gr.Markdown("## 📄 Interview Question Generator for IBM CIC")
     with gr.Row():
@@ -121,5 +121,3 @@ with gr.Blocks() as demo:
 
 if __name__ == "__main__":
     demo.queue().launch()
-
-'''

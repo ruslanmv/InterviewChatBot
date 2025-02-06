@@ -1,0 +1,42 @@
+[
+    {
+        "role": "user",
+        "content": "no experience"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for letting me know. Let's move on to the next question: Can you explain a project you've worked on that involved collaboration with a team? What was your role, and how did you contribute to the project's success?"
+    },
+    {
+        "role": "user",
+        "content": "no experience"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for your honesty. Could you describe a challenging technical problem you've solved and how you approached it?"
+    },
+    {
+        "role": "user",
+        "content": " i have never approached anthing"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for sharing that. Let's move on to a different topic. Can you describe a challenging project you worked on and how you handled it?"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for your answer. Do you have any questions for me?"
+    },
+    {
+        "role": "user",
+        "content": "no questions"
+    },
+    {
+        "role": "assistant",
+        "content": "That wraps up our interview. Thank you for your responses—it's been great learning more about you!"
+    },
+    {
+        "role": "assistant",
+        "content": "That wraps up our interview. Thank you for your responses—it's been great learning more about you!"
+    }
+]

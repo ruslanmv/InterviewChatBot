@@ -204,9 +204,12 @@ def generate_and_save_questions_from_pdf3(pdf_path, total_questions=5):
             json.dump({"questions": combined_questions}, f, indent=4, ensure_ascii=False)
 
         # 7. Save only the questions (overwrite `questions.json` if it already exists)
-        simple_save_path = "questions.json"
-        with open(simple_save_path, "w", encoding="utf-8") as f:
-            json.dump(combined_questions, f, indent=4, ensure_ascii=False)
+        #simple_save_path = "questions.json"
+        #with open(simple_save_path, "w", encoding="utf-8") as f:
+        #    json.dump(combined_questions, f, indent=4, ensure_ascii=False)
+
+        save_questions(combined_questions)
+        print(f"[INFO] Questions saved to {QUESTIONS_PATH}")
 
         yield "✅ PDF processing complete. Questions saved successfully!", combined_questions
 
@@ -315,10 +318,12 @@ def generate_questions_from_job_description(job_description, total_questions=5):
             json.dump({"questions": combined_questions}, f, indent=4, ensure_ascii=False)
 
         # Save only the questions (overwrite `questions.json` if it already exists)
-        simple_save_path = "questions.json"
-        with open(simple_save_path, "w", encoding="utf-8") as f:
-            json.dump(combined_questions, f, indent=4, ensure_ascii=False)
+        #simple_save_path = "questions.json"
+        #with open(simple_save_path, "w", encoding="utf-8") as f:
+        #    json.dump(combined_questions, f, indent=4, ensure_ascii=False)
 
+        save_questions(combined_questions)
+        print(f"[INFO] Questions saved to {QUESTIONS_PATH}")
         return "✅ Job description processing complete. Questions saved successfully!", combined_questions
 
     except Exception as e:

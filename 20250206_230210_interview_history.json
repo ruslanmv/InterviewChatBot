@@ -1,0 +1,34 @@
+[
+    {
+        "role": "user",
+        "content": "I dont experience"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for sharing that. Can you tell me about a challenging problem you solved in a previous role, especially focusing on the steps you took to resolve it?"
+    },
+    {
+        "role": "user",
+        "content": "no problem I had before"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for sharing that. Could you tell me about a technical project you've worked on recently and the role you played in it?"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for your answer. Do you have any questions for me?"
+    },
+    {
+        "role": "user",
+        "content": "no"
+    },
+    {
+        "role": "assistant",
+        "content": "That wraps up our interview. Thank you for your responses—it's been great learning more about you! I will share the feedback with the HR Team, and they will reach out to you soon."
+    },
+    {
+        "role": "assistant",
+        "content": "That wraps up our interview. Thank you for your responses—it's been great learning more about you! I will share the feedback with HR Team, and they will reach out to you soon."
+    }
+]

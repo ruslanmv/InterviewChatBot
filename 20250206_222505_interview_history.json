@@ -1,0 +1,38 @@
+[
+    {
+        "role": "user",
+        "content": "no idea "
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for your response. Could you describe a challenging project you've worked on and how you approached it?"
+    },
+    {
+        "role": "user",
+        "content": "No idea "
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for your honesty. Could you please tell me about a challenging technical problem you've solved in the past?"
+    },
+    {
+        "role": "user",
+        "content": "no idea"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for sharing. Could you explain your experience working with programming languages, such as Python or Java?"
+    },
+    {
+        "role": "user",
+        "content": "I have neer worked"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for sharing that. Can you tell me about a time when you successfully worked as part of a team to achieve a project goal?"
+    },
+    {
+        "role": "assistant",
+        "content": "That wraps up our interview. Thank you for your responses—it's been great learning more about you!"
+    }
+]

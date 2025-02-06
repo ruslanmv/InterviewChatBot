@@ -1,0 +1,38 @@
+[
+    {
+        "role": "user",
+        "content": "I dont know well"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for your honesty. Could you please describe your experience with programming languages, and which ones you're most comfortable using?"
+    },
+    {
+        "role": "user",
+        "content": "no experience"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for letting me know. Could you share a bit about your experience with software development methodologies, such as Agile or Scrum?"
+    },
+    {
+        "role": "user",
+        "content": "no experience"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for letting me know. Can you tell me about a challenging project you have worked on and how you approached it?"
+    },
+    {
+        "role": "user",
+        "content": "next question"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for letting me know. Could you please describe a challenging technical problem you've solved in the past?"
+    },
+    {
+        "role": "assistant",
+        "content": "That wraps up our interview. Thank you for your responses—it's been great learning more about you!"
+    }
+]

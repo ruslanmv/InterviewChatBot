@@ -1,15 +1,20 @@
 [
     {
-        "profession": "Software Engineer/Developer (Full Stack, Front-end, Back-end)",
-        "interview_type": "Initial Phone Screen",
-        "description": "Essential for building and maintaining applications. Full-stack developers work on both the front-end and back-end of applications. Front-end developers focus on the user interface and user experience, while back-end developers work on the server-side logic and databases.",
-        "max_questions": 5,
+        "profession": "Data Scientist",
+        "interview_type": "Second/Final Round - Technical Deep Dive",
+        "description": "Analyzes data to provide insights and build predictive models.",
+        "max_questions": 10,
         "questions": [
-            "\"Can you describe a project where you utilized both front-end and back-end technologies and what was your role in it?\"",
-            "\"What are some of the programming languages you are comfortable with and can you discuss a project where you used them?\"",
-            "\"Can you explain your understanding of the MVC design pattern and provide an example of its use in one of your projects?\"",
-            "\"How do you approach debugging when you encounter an issue in your code?\"",
-            "\"Can you discuss your experience with version control systems such as Git?\""
+            "\"Can you share your approach to cleaning and preparing raw data for analysis?\"",
+            "\"Can you explain a complex machine learning algorithm that you have used in your projects and why you chose it?\"",
+            "\"How do you approach feature selection when preparing your data for machine learning models?\"",
+            "\"Could you describe a situation where you had to deal with a large dataset? What strategies did you use to manage it?\"",
+            "\"What are your strategies for validating the results of a data analysis?\"",
+            "\"Can you discuss your experience with data visualization tools and how you've used them to communicate insights to non-technical team members?\"",
+            "\"How do you ensure that your models are not overfitting the data?\"",
+            "\"Can you discuss a time when you developed a predictive model? What techniques did you use and were the results successful?\"",
+            "\"How have you handled missing or inconsistent data in your past projects?\"",
+            "\"Can you describe a situation where you used statistical analysis to solve a real-world problem?\""
         ]
     }
 ]

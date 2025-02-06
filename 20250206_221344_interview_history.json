@@ -1,0 +1,38 @@
+[
+    {
+        "role": "user",
+        "content": "Yes I analize the passwords of the users and i provide more complex password with two steps authentication"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for sharing your approach to password security. Could you please describe a challenging technical problem you encountered in a project and how you resolved it?"
+    },
+    {
+        "role": "user",
+        "content": "Yes I solved tih sveral doos atacks"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for sharing that. Could you please describe a challenging project you've worked on and how you approached it?"
+    },
+    {
+        "role": "user",
+        "content": "no idea"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for your honesty. Could you please describe a challenging technical problem you've solved in the past?"
+    },
+    {
+        "role": "user",
+        "content": "no idea"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for your honesty. Let's move on to a different topic. Can you tell me about a challenging project you've worked on and how you approached it?"
+    },
+    {
+        "role": "assistant",
+        "content": "That wraps up our interview. Thank you for your responses—it's been great learning more about you!"
+    }
+]

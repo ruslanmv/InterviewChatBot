@@ -1,0 +1,22 @@
+[
+    {
+        "role": "user",
+        "content": "I dont have expereince"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for sharing that. Could you tell me about a challenging technical problem you've solved in the past?"
+    },
+    {
+        "role": "user",
+        "content": "no experience"
+    },
+    {
+        "role": "assistant",
+        "content": "Thank you for your honesty. Could you describe your experience with programming languages?"
+    },
+    {
+        "role": "assistant",
+        "content": "That wraps up our interview. Thank you for your responses—it's been great learning more about you!"
+    }
+]
